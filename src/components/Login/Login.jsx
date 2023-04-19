@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 const Login = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider(auth);
-  const { signInUser, signInWithGoogle } = useContext(AuthContext);
+  const { signInUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
   const navigate = useNavigate()
 
   const [user, setUser] = useState(null);
@@ -60,6 +60,17 @@ const Login = () => {
         toast(error.message)
       })
   };
+
+  const handleSignInWithGithub = () => {
+    signInWithGithub()
+    .then((result) => {
+      toast("Log in successful")
+      navigate("/")
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
 
   return (
     <div className="p-6 lg:p-16 lg:h-[calc(100vh-300px)] flex justify-center items-center">
@@ -142,7 +153,7 @@ const Login = () => {
             >
               <h1 className="text-lg font-bold text-white">Google</h1>
             </div>
-            <div className="bg-green-900 px-4 py-2 rounded-lg cursor-pointer">
+            <div className="bg-green-900 px-4 py-2 rounded-lg cursor-pointer" onClick={handleSignInWithGithub}>
               <h1 className="text-lg font-bold text-white">Github</h1>
             </div>
           </div>

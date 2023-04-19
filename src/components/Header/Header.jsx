@@ -34,7 +34,7 @@ const Header = () => {
         <ol className="flex gap-4 items-center">
           {user ? (
             <>
-              {/* <NavLink
+              <NavLink
                 to={"/"}
                 className={({ isActive }) =>
                   isActive
@@ -43,7 +43,7 @@ const Header = () => {
                 }
               >
                 Home
-              </NavLink> */}
+              </NavLink>
 
               <h1 className="text-lg font-extrabold">
                 {user.displayName || user.email}
